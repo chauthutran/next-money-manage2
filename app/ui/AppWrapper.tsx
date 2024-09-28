@@ -3,24 +3,31 @@ import SpinningIcon from "./common/SpinningIcon";
 import CardItemsGrid from "./items/CardItemsGrid";
 import CardItemsFlex from "./items/CardItemsFlex";
 import ListRows from "./items/ListRows";
+import * as Utils from "@/util/utils";
 
 export default function AppWrapper() {
 	
 	const [loading, setLoading] = useState<boolean>(true); // Loading state
 	const [displayType, setDisplayType] = useState('CardItemsFlex'); // Loading state
-	const [dataList, setDataList] = useState([]); // Loading data
+	const [dataList, setDataList] = useState<any[]>([]); // Loading data
 	
 	useEffect( () => {
 		onRequestClick();
 	}, []); // Only if 'symbol' is not same as previous one, run 'useEffect'
 
 
+	// TODO? - color each month differently?
+
+
 	const onRequestClick = async () => {
 
 		const response: any = await fetch('/api/expense?userId=66c87d3411b974f022f84bec');
-		const responseJson: any = await response.json();
+		const responseJson: any[] = await response.json();
 
-		setDataList(responseJson);
+		// OPTOINAL?  Reverse the order..
+		const sortedArr = Utils.sortArrayByDate(responseJson);
+
+		setDataList( sortedArr);
 		setLoading(false);
 	};
 
