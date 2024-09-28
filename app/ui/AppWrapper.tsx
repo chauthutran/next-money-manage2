@@ -4,6 +4,8 @@ import CardItemsGrid from "./items/CardItemsGrid";
 import CardItemsFlex from "./items/CardItemsFlex";
 import ListRows from "./items/ListRows";
 import * as Utils from "@/util/utils";
+import PieChart1 from "./items/PieChart1";
+import PieChart2 from "./items/PieChart2";
 
 export default function AppWrapper() {
 	
@@ -54,6 +56,9 @@ export default function AppWrapper() {
 								<option value="CardItemsGrid">CardItemsGrid</option>
 								<option value="ListRows">ListRows</option>
 								<option value="Text">Text</option>
+								<option value="None">None</option>
+								<option value="Chart1">Chart1</option>
+								<option value="Chart2">Chart2</option>
 							</select>
 						</div>
 					</div>
@@ -62,6 +67,9 @@ export default function AppWrapper() {
 						{ displayType === 'CardItemsGrid' && <CardItemsGrid dataList={dataList} /> }
 						{ displayType === 'CardItemsFlex' && <CardItemsFlex dataList={dataList} /> }
 						{ displayType === 'ListRows' && <ListRows dataList={dataList} /> }
+						{ displayType === 'None' && <div>No Display</div> }
+						{ displayType === 'Chart1' && <PieChart1></PieChart1> }
+						{ displayType === 'Chart2' && <PieChart2></PieChart2> }
 					</div>
 				</div>
 			}

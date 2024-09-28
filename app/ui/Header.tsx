@@ -1,7 +1,7 @@
 export default function Header() {
 
 	return (
-		<header className="border-b-2 border-slate-300 p-4 shadow-md">
+		<header className="p-4">
 			<div className="flex items-center justify-between">
 				<div className="flex flex-row">
 					<div className="hidden md:block mx-3 text-xl uppercase tracking-wider" style={{ letterSpacing: "8px" }}>Personal Expense Management</div>
