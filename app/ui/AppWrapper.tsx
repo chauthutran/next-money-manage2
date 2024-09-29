@@ -1,27 +1,21 @@
 import { useEffect, useState } from "react";
 import SpinningIcon from "./common/SpinningIcon";
-import CardItemsGrid from "./items/CardItemsGrid";
-import CardItemsFlex from "./items/CardItemsFlex";
-import ListRows from "./items/ListRows";
 import * as Utils from "@/util/utils";
-import PieChart1 from "./items/PieChart1";
-import PieChart2 from "./items/PieChart2";
+import { useContextNavChoice } from "@/context/ContextNavChoice";
+import DataDisplay from "./pages/DataDisplay";
+import PieChartDisplay from "./pages/PieChartDisplay";
 
 export default function AppWrapper() {
 	
 	const [loading, setLoading] = useState<boolean>(true); // Loading state
-	const [displayType, setDisplayType] = useState('CardItemsFlex'); // Loading state
 	const [dataList, setDataList] = useState<any[]>([]); // Loading data
-	
+	const { navChoice, setNavChoice } = useContextNavChoice();
+
 	useEffect( () => {
-		onRequestClick();
+		onDataRequest();
 	}, []); // Only if 'symbol' is not same as previous one, run 'useEffect'
 
-
-	// TODO? - color each month differently?
-
-
-	const onRequestClick = async () => {
+	const onDataRequest = async () => {
 
 		const response: any = await fetch('/api/expense?userId=66c87d3411b974f022f84bec');
 		const responseJson: any[] = await response.json();
@@ -31,10 +25,6 @@ export default function AppWrapper() {
 
 		setDataList( sortedArr);
 		setLoading(false);
-	};
-
-	const displayChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-		setDisplayType(event.target.value);
 	};
 
 	// 1. Download the data on load <-- on 'useEffect'.. unless it is refreshed by button - state?
@@ -47,31 +37,10 @@ export default function AppWrapper() {
 				<div className="ml-2 mt-1 w-fit">
 					<SpinningIcon className="text-gray-400" />
 				</div>
-				:<div className="ml-2 mt-1 text-sm">
-					<div className="w-full flex justify-end" >
-						<div className="w-fit" >
-							<label className="text-xs" htmlFor="dropdown">Display:</label>
-							<select id="dropdown" className="ml-1 text-xs p-1" value={displayType} onChange={displayChange}>
-								<option value="CardItemsFlex">CardItemsFlex</option>
-								<option value="CardItemsGrid">CardItemsGrid</option>
-								<option value="ListRows">ListRows</option>
-								<option value="Text">Text</option>
-								<option value="None">None</option>
-								<option value="Chart1">Chart1</option>
-								<option value="Chart2">Chart2</option>
-							</select>
-						</div>
-					</div>
-					<div className="mt-2">
-						{ displayType === 'Text' && JSON.stringify(dataList) }
-						{ displayType === 'CardItemsGrid' && <CardItemsGrid dataList={dataList} /> }
-						{ displayType === 'CardItemsFlex' && <CardItemsFlex dataList={dataList} /> }
-						{ displayType === 'ListRows' && <ListRows dataList={dataList} /> }
-						{ displayType === 'None' && <div>No Display</div> }
-						{ displayType === 'Chart1' && <PieChart1></PieChart1> }
-						{ displayType === 'Chart2' && <PieChart2></PieChart2> }
-					</div>
-				</div>
+				:<>
+				{ navChoice === 'Home' && <DataDisplay dataList={dataList} /> }
+				{ navChoice === 'PieChart' && <PieChartDisplay dataList={dataList} /> }
+				</>
 			}
 		</div>
 	);
