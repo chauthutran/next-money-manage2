@@ -1,8 +1,10 @@
+import NavTop from "./nav/NavTop";
+
 export default function Header() {
 
 	return (
-		<header className="p-4">
-			<div className="flex items-center justify-between">
+		<header className="p-2">
+			<div className="flex items-center justify-between mt-1">
 				<div className="flex flex-row">
 					<div className="hidden md:block mx-3 text-xl uppercase tracking-wider" style={{ letterSpacing: "8px" }}>Personal Expense Management</div>
 					<div className="md:hidden uppercase tracking-wider" style={{ letterSpacing: "3px" }}>Personal Expense Management</div>
@@ -14,6 +16,7 @@ export default function Header() {
 					<button>Logout</button>
 				</div>
 			</div>
+			<NavTop></NavTop>
 		</header>
 	);
 };

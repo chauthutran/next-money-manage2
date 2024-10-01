@@ -4,7 +4,7 @@ import PieChart2 from "@/ui/items/PieChart2";
 
 export default function PeiChartDisplay({ dataList }: { dataList: any[] }) {
 
-	const [displayType, setDisplayType] = useState('Chart1'); // Loading state
+	const [displayType, setDisplayType] = useState('Chart2'); // Loading state
 
 	const displayChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
 		setDisplayType(event.target.value);
@@ -16,8 +16,8 @@ export default function PeiChartDisplay({ dataList }: { dataList: any[] }) {
 				<div className="w-fit" >
 					<label className="text-xs" htmlFor="dropdown">Display:</label>
 					<select id="dropdown" className="ml-1 text-xs p-1" value={displayType} onChange={displayChange}>
-						<option value="Chart1">Chart1</option>
 						<option value="Chart2">Chart2</option>
+						<option value="Chart1">Chart1</option>
 					</select>
 				</div>
 			</div>

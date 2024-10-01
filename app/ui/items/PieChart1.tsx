@@ -4,14 +4,7 @@ import { Chart, ArcElement, Tooltip, Legend } from 'chart.js';
 // Register necessary Chart.js components
 Chart.register(ArcElement, Tooltip, Legend);
 
-type Expense = {
-	value: number;
-	category: string;
-};
-
-//type PieChartProps = {
-//  expenses: Expense[];
-//};
+type Expense = { value: number, category: string };
 
 export default function PieChart1() {
 

@@ -17,27 +17,30 @@ export default function PieChart2() {
 		{ value: 50, category: 'Transport' }
 	];
 
-
 	return (
-		<ResponsiveContainer width="100%" height={400}>
-			<PieChart>
-				<Pie
-					data={expenses}
-					dataKey="value"
-					nameKey="category"
-					cx="50%"
-					cy="50%"
-					outerRadius={150}
-					fill="#8884d8"
-					label
-				>
-					{expenses.map((entry, index) => (
-						<Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-					))}
-				</Pie>
-				<Tooltip />
-				<Legend />
-			</PieChart>
-		</ResponsiveContainer>
+		<div>
+			<ResponsiveContainer width="100%" height={400}>
+				<PieChart>
+					<Pie
+						data={expenses}
+						dataKey="value"
+						nameKey="category"
+						cx="50%"
+						cy="50%"
+						outerRadius={150}
+						fill="#8884d8"
+						label
+					>
+						{expenses.map((entry, index) => (
+							<Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+						))}
+					</Pie>
+					<Tooltip />
+					<Legend />
+				</PieChart>
+			</ResponsiveContainer>
+
+			<div>[*NOTE]: This chart is not based on actual data due to the data not currently not being marked with categories. </div>
+		</div>
 	);
 };
