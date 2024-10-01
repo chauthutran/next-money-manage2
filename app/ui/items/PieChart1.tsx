@@ -16,7 +16,6 @@ export default function PieChart1() {
 		{ value: 50, category: 'Transport' }
 	];
 
-
 	const data = {
 		labels: expenses.map(expense => expense.category), // categories as labels
 		datasets: [
@@ -28,7 +27,6 @@ export default function PieChart1() {
 			},
 		],
 	};
-
 
 	const options = {
 		responsive: true,
@@ -44,8 +42,12 @@ export default function PieChart1() {
 	};
 
 	return (
-		<>
-			<Pie data={data} options={options} />
-		</>
+		<div className='flex flex-col items-center'>
+			<div className="w-8/12">
+				<Pie data={data} options={options} />
+			</div>
+			<div className="mt-4">[*NOTE]: This chart is not based on actual data due to the data not currently not being marked with categories. </div>
+
+		</div>
 	);
 };
