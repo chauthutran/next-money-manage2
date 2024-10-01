@@ -11,7 +11,7 @@ const ContextNavDirection = createContext<ContextNavDirection | null>(null);
 
 export function ContextWrapperNavDirection( { children } : { children: React.ReactNode; } ) 
 {
-	let [ navDirection, setNavDirection ] = useState( 'LeftSide' );
+	const [ navDirection, setNavDirection ] = useState( 'LeftSide' );
 
 	return (
 		<ContextNavDirection.Provider value={ {navDirection, setNavDirection } }>

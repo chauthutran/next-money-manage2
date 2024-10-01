@@ -11,7 +11,7 @@ const ContextNavChoice = createContext<ContextNavChoice | null>(null);
 
 export function ContextWrapperNavChoice( { children } : { children: React.ReactNode; } ) 
 {
-	let [ navChoice, setNavChoice ] = useState( 'Home' );
+	const [ navChoice, setNavChoice ] = useState( 'Home' );
 
 	return (
 		<ContextNavChoice.Provider value={ {navChoice, setNavChoice } }>

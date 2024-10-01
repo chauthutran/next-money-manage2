@@ -22,7 +22,7 @@ export const removeFromArray = function( list: any[], value: string, propertyNam
 
 	for( let i = 0; i < list.length; i++ )
 	{
-		var item = list[i];
+		const item = list[i];
 		if ( item[ propertyName ] == value ) 
 		{
 			index = i;
@@ -129,7 +129,7 @@ export const generateMonthList = (startDate: Date, endDate: Date): any[] => {
       throw new Error("Start date must be before end date");
     }
   
-    let resultList: any[] = [];
+    const resultList: any[] = [];
     const fromYear = new Date(startDate).getFullYear();
     const toYear = new Date(endDate).getFullYear();
 
@@ -184,7 +184,7 @@ export const findItemFromList = ( list: any[], value: any, propertyName: string 
 
         for( let i = 0; i < list.length; i++ )
         {
-            let listItem = list[i];
+            const listItem = list[i];
 
             if ( listItem[propertyName] == value )
             {
@@ -199,12 +199,12 @@ export const findItemFromList = ( list: any[], value: any, propertyName: string 
 
 export const findAndReplaceItemFromList = function( list: any[], searchValue: any, searchProperty: string, replacedData: any )
 {
-	var found = false;
+	let found = false;
 	
 	// Found item, replace a new one
 	for( let i = 0; i < list.length; i++ )
 	{
-		var item = list[i];
+		const item = list[i];
 		if ( item[ searchProperty ] == searchValue )
 		{
 			list[i] = cloneJSONObject( replacedData );

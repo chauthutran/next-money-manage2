@@ -54,7 +54,7 @@ export async function POST(request: NextRequest) {
 	}
 
 	await connectToDatabase();
-	let newTransaction = await Expense.create(payload);
+	const newTransaction = await Expense.create(payload);
 
 	return NextResponse.json(newTransaction, { status: 200 })
 }
@@ -69,7 +69,7 @@ export async function PUT(request: NextRequest, { params }: { params: any }) {
    updateFields.date = Utils.formatDateObjToDbDate(Utils.convertDateStrToObj(payload.date));
 
 	// Create the update object
-	let updateObject = {
+	const updateObject = {
 		$set: updateFields,
 		// $currentDate: { updatedAt: true }, // Update the `updatedAt` timestamp
 	};
