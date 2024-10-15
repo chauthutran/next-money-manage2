@@ -62,7 +62,7 @@ export default function PeiChartDisplay({ dataList }: { dataList: any[] }) {
 			</div>
 			<div className="mt-2">
 				{displayType === 'Chart1' && <PieChart1 chartData={transformedData} categories={categories}></PieChart1>}
-				{displayType === 'Chart2' && <PieChart2></PieChart2>}
+				{displayType === 'Chart2' && <PieChart2 chartData={transformedData} categories={categories}></PieChart2>}
 			</div>
 		</div>
 	);
